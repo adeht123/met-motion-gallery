@@ -64,7 +64,7 @@ test("card save control uses icon-only plus and check states", async () => {
   assert.doesNotMatch(cardSaveBranch, /button\.textContent = pressed \? "Saved" : "Save"/);
 });
 
-test("styles expose saved pin morph and confirmation underline", async () => {
+test("styles expose saved pin morph without confirmation underline", async () => {
   const css = await readFile(new URL("../styles.css", import.meta.url), "utf8");
 
   assert.match(css, /\.art-card__save--icon::before/);
@@ -73,16 +73,30 @@ test("styles expose saved pin morph and confirmation underline", async () => {
   assert.match(css, /\.art-card__save--icon\[aria-pressed="false"\]::after\s*{[\s\S]*background:\s*linear-gradient\(currentColor,\s*currentColor\)\s+center \/ 1px 13px no-repeat,[\s\S]*linear-gradient\(currentColor,\s*currentColor\)\s+center \/ 13px 1px no-repeat/);
   assert.doesNotMatch(css, /\.art-card__save--icon\[aria-pressed="false"\]::after\s*{[\s\S]*content:\s*"\+"/);
   assert.match(css, /\.art-card__save--icon\[aria-pressed="true"\]::after\s*{[\s\S]*content:\s*"\\2713"/);
-  assert.match(css, /\.art-card\.is-saved::after\s*{[\s\S]*transform:\s*translateX\(-50%\)\s+scaleX\(1\)/);
+  assert.doesNotMatch(css, /\.art-card::after\s*{/);
+  assert.doesNotMatch(css, /\.art-card\.is-saved::after\s*{/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.art-card__save--icon::before/);
 });
 
-test("styles expose sketch-like hover and saved glow layers", async () => {
+test("styles expose sketch-like hover and saved button glow layer", async () => {
   const css = await readFile(new URL("../styles.css", import.meta.url), "utf8");
 
   assert.match(css, /\.art-card:hover,\s*[\s\S]*\.art-card:focus-visible\s*{[\s\S]*0 18px 38px rgba\(243, 240, 231, 0\.22\)/);
-  assert.match(css, /\.art-card\.is-saved::after\s*{[\s\S]*box-shadow:\s*0 0 10px rgba\(243, 240, 231, 0\.46\)/);
   assert.match(css, /\.art-card__save--icon\[aria-pressed="true"\]::before\s*{[\s\S]*0 0 0 4px rgba\(247, 245, 238, 0\.72\)/);
+});
+
+test("cards do not render a visible details footer", async () => {
+  const source = await readFile(new URL("../src/main.js", import.meta.url), "utf8");
+  const css = await readFile(new URL("../styles.css", import.meta.url), "utf8");
+  const createCardStart = source.indexOf("function createCard");
+  const createCardEnd = source.indexOf("function revealCells", createCardStart);
+  const createCardSource = source.slice(createCardStart, createCardEnd);
+
+  assert.doesNotMatch(createCardSource, /createElement\("div",\s*"art-card__footer"\)/);
+  assert.doesNotMatch(createCardSource, /createElement\("span",\s*"",\s*"Open details"\)/);
+  assert.match(createCardSource, /card\.setAttribute\("aria-label", `\$\{cardTitle\}, \$\{cardArtist\}\. Open details\.`\)/);
+  assert.doesNotMatch(css, /\.art-card__footer\s*{/);
+  assert.doesNotMatch(css, /--card-footer-pad-y:/);
 });
 
 test("card images attach load handlers before assigning src for cached image reveal", async () => {

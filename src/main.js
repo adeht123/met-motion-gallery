@@ -644,10 +644,7 @@ function createCard(work, index) {
     media.append(createElement("div", "no-image-block", "Image unavailable"));
   }
 
-  const footer = createElement("div", "art-card__footer");
-  footer.append(createElement("span", "", "Open details"));
-
-  card.append(header, media, footer);
+  card.append(header, media);
   cell.append(card);
 
   return cell;

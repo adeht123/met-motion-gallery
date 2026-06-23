@@ -72,7 +72,6 @@
   --card-header-min-compact: 118px;
   --card-media-min: 132px;
   --card-media-min-no-image: 168px;
-  --card-footer-pad-y: 10px;
   --bp-mobile: 760px;
   --bp-tablet: 1100px;
   --bp-desktop: 1280px;
@@ -543,24 +542,6 @@ input {
   contain: layout paint style;
 }
 
-.art-card::after {
-  content: "";
-  position: absolute;
-  right: auto;
-  bottom: 8px;
-  left: 50%;
-  width: min(96px, calc(100% - 52px));
-  height: 1px;
-  transform: translateX(-50%) scaleX(0);
-  transform-origin: center;
-  background: rgba(17, 17, 15, 0.56);
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    transform 260ms var(--ease-out),
-    opacity 180ms ease;
-}
-
 .art-card:hover,
 .art-card:focus-visible {
   --hover-y: var(--motion-card-hover-y);
@@ -580,12 +561,6 @@ input {
 
 .art-card.is-saved {
   border-color: var(--color-card-selected-border);
-}
-
-.art-card.is-saved::after {
-  transform: translateX(-50%) scaleX(1);
-  box-shadow: 0 0 10px rgba(243, 240, 231, 0.46);
-  opacity: 0.76;
 }
 
 .art-card__header {
@@ -832,18 +807,6 @@ input {
   font-size: 9px;
   letter-spacing: 0.12em;
   text-align: center;
-  text-transform: uppercase;
-}
-
-.art-card__footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  padding: var(--card-footer-pad-y) var(--space-card-pad);
-  border-top: var(--border-card-inner);
-  color: var(--muted-ink);
-  font-size: 7.5px;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -1509,7 +1472,6 @@ dialog.is-open::backdrop {
     --card-header-min-compact: 112px;
     --card-media-min: 120px;
     --card-media-min-no-image: 150px;
-    --card-footer-pad-y: 9px;
     --font-card-title: clamp(16px, 2vw, 21px);
     --font-card-title-small: clamp(15px, 1.7vw, 19px);
   }
@@ -1553,7 +1515,6 @@ dialog.is-open::backdrop {
     --card-header-min-compact: 104px;
     --card-media-min: 112px;
     --card-media-min-no-image: 132px;
-    --card-footer-pad-y: 8px;
     --font-card-title: clamp(16px, 4.8vw, 20px);
     --font-card-title-small: clamp(15px, 4.4vw, 18px);
     --font-card-meta: 7.5px;
@@ -1605,10 +1566,6 @@ dialog.is-open::backdrop {
 
   .art-card--feature .art-card__header {
     min-height: var(--card-header-min-feature);
-  }
-
-  .art-card__footer {
-    padding: 9px var(--space-card-pad-sm);
   }
 
   .status-dock {
@@ -1755,7 +1712,6 @@ dialog.is-open::backdrop {
     transform: none;
   }
 
-  .art-card::after,
   .art-card__save--icon::before,
   .art-card__save--icon::after {
     transition: none !important;

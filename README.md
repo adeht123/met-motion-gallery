@@ -30,7 +30,7 @@ Vercel Hobby is suitable for personal, non-commercial demos. Commercial use requ
 
 ## Update Workflow
 
-For the easiest step-by-step guide, see [`UPDATE_AND_DEPLOY.md`](./UPDATE_AND_DEPLOY.md).
+For the beginner-friendly step-by-step guide, see [`UPDATE_AND_DEPLOY.md`](./UPDATE_AND_DEPLOY.md).
 
 Short version:
 

@@ -30,7 +30,9 @@ Vercel Hobby is suitable for personal, non-commercial demos. Commercial use requ
 
 ## Update Workflow
 
-After the GitHub repository is connected to Vercel:
+For the easiest step-by-step guide, see [`UPDATE_AND_DEPLOY.md`](./UPDATE_AND_DEPLOY.md).
+
+Short version:
 
 ```bash
 npm test

@@ -41,6 +41,8 @@ git push
 
 Pushing to `main` will trigger a new Vercel production deployment. The public URL stays the same.
 
+Current production URL: `https://met-motion-gallery.vercel.app`.
+
 ## Verify
 
 ```bash

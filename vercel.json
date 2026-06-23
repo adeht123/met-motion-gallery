@@ -1,0 +1,23 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "functions": {
+    "api/met.js": {
+      "maxDuration": 15
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/met/search",
+      "destination": "/api/met?path=search"
+    },
+    {
+      "source": "/api/met/departments",
+      "destination": "/api/met?path=departments"
+    },
+    {
+      "source": "/api/met/objects/:id",
+      "destination": "/api/met?path=objects/:id"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "The MET Motion Gallery",
+  "short_name": "MET Gallery",
+  "description": "A refined exploratory gallery powered by The Met Open Access API",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#030303",
+  "theme_color": "#030303",
+  "icons": [
+    {
+      "src": "./assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

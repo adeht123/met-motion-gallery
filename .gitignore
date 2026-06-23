@@ -1,0 +1,15 @@
+.vercel/
+node_modules/
+.env
+.env.*
+
+# Local agent/tooling state
+.lazyweb/
+.playwright-mcp/
+.superpowers/
+
+# Local verification artifacts
+qa-captures/
+
+# Unused legacy bundle; the app loads src/main.js.
+app.js

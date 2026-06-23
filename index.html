@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#030303">
+  <meta name="description" content="A refined exploratory gallery connected to The Metropolitan Museum of Art Collection API.">
+  <title>The MET Motion Gallery</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="preconnect" href="https://collectionapi.metmuseum.org" crossorigin>
+  <link rel="preconnect" href="https://images.metmuseum.org" crossorigin>
+  <link rel="stylesheet" href="./styles.css?v=card-system-v1">
+</head>
+<body>
+  <a class="skip-link" href="#gallery">Skip to works</a>
+
+  <header class="site-header" id="site-header">
+    <button class="brand" type="button" data-action="home" aria-label="Return to the gallery">
+      <span class="brand__mark">MET</span>
+      <span class="brand__name">Motion Gallery</span>
+    </button>
+
+    <nav class="primary-nav" aria-label="Primary">
+      <button type="button" class="nav-link is-active" data-action="home">Discover</button>
+      <button type="button" class="nav-link" data-action="search">Search</button>
+      <button type="button" class="nav-link" data-action="saved">Saved <span id="saved-count">0</span></button>
+    </nav>
+
+    <button class="menu-button" type="button" data-action="menu" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main id="main-content">
+    <h1 class="sr-only">The MET Motion Gallery</h1>
+    <section class="gallery-shell" aria-labelledby="view-context">
+      <div class="view-bar">
+        <p id="view-context">Curated fallback / hydrating MET records</p>
+        <div class="view-bar__actions">
+          <div class="status-dock" role="status" aria-live="polite">
+            <span><span class="api-light" id="api-light"></span><span id="api-status">Ready</span></span>
+            <span id="work-count">0 works</span>
+          </div>
+          <button class="text-button" type="button" data-action="search" aria-label="Search the collection">Search</button>
+        </div>
+      </div>
+
+      <section class="state-panel" id="state-panel" aria-live="polite" hidden>
+        <div>
+          <p id="state-panel-kicker">Connection</p>
+          <h2 id="state-panel-title">Connection issue</h2>
+          <p id="state-panel-copy">The gallery is still available from the bundled fallback set.</p>
+        </div>
+        <button class="solid-button" id="state-retry" type="button">Retry</button>
+      </section>
+
+      <div class="gallery" id="gallery" aria-live="polite" aria-busy="false"></div>
+
+      <section class="empty-state" id="empty-state" hidden>
+        <p id="empty-kicker">No matches</p>
+        <h2 id="empty-title">Try a broader search or clear a filter.</h2>
+        <button class="text-button" type="button" data-action="search">Adjust search</button>
+      </section>
+
+      <button class="load-more" id="load-more" type="button" hidden>Load more works</button>
+      <p class="end-state" id="end-state" hidden>All available works are visible.</p>
+      <div class="load-sentinel" id="load-sentinel" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <dialog class="search-dialog" id="search-dialog" aria-labelledby="search-title">
+    <form class="search-panel" id="search-form" method="dialog">
+      <div class="dialog-topline">
+        <h2 id="search-title">Search The MET Collection</h2>
+        <button class="close-button" type="button" data-close="search" aria-label="Close search">Close</button>
+      </div>
+
+      <label class="search-field">
+        <span class="sr-only">Search term</span>
+        <input id="search-input" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Try moon, armor, textile" minlength="2">
+        <button type="submit">Search</button>
+      </label>
+
+      <div class="filter-grid">
+        <label>
+          <span>Department</span>
+          <select id="department-select"></select>
+        </label>
+        <label>
+          <span>Classification / medium</span>
+          <select id="classification-select">
+            <option value="">Any classification</option>
+            <option value="Paintings">Paintings</option>
+            <option value="Drawings">Drawings</option>
+            <option value="Prints">Prints</option>
+            <option value="Photographs">Photographs</option>
+            <option value="Sculpture">Sculpture</option>
+            <option value="Textiles">Textiles</option>
+            <option value="Ceramics">Ceramics</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Jewelry">Jewelry</option>
+          </select>
+        </label>
+        <label>
+          <span>Date begin</span>
+          <input id="date-begin" type="number" inputmode="numeric" placeholder="1500">
+        </label>
+        <label>
+          <span>Date end</span>
+          <input id="date-end" type="number" inputmode="numeric" placeholder="1900">
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <label class="toggle-control">
+          <input id="filter-images-only" type="checkbox" checked>
+          <span>Images only</span>
+        </label>
+        <label class="toggle-control">
+          <input id="filter-highlight" type="checkbox">
+          <span>Highlights</span>
+        </label>
+        <label class="toggle-control">
+          <input id="filter-on-view" type="checkbox">
+          <span>On view</span>
+        </label>
+      </div>
+
+      <div class="suggestions" aria-label="Suggested searches">
+        <button type="button" data-query="night">Night</button>
+        <button type="button" data-query="flowers">Flowers</button>
+        <button type="button" data-query="armor">Armor</button>
+        <button type="button" data-query="textile">Textile</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="detail-dialog" id="detail-dialog" aria-labelledby="detail-title">
+    <div class="detail-view">
+      <div class="detail-toolbar">
+        <p><span id="detail-index">01</span> / <span id="detail-total">01</span></p>
+        <div>
+          <button class="detail-tool" id="detail-save" type="button" aria-pressed="false" aria-label="Save work">Save</button>
+          <button class="detail-tool" id="detail-share" type="button">Copy link</button>
+          <button class="close-button close-button--light" type="button" data-close="detail" aria-label="Close details">Close</button>
+        </div>
+      </div>
+
+      <div class="detail-stage">
+        <button class="detail-nav detail-nav--prev" type="button" data-detail-nav="prev" aria-label="Previous work">Previous</button>
+        <figure class="detail-media">
+          <img id="detail-image" alt="" decoding="async">
+          <div class="detail-no-image" id="detail-no-image" hidden>Image unavailable</div>
+          <figcaption id="detail-image-caption"></figcaption>
+        </figure>
+        <button class="detail-nav detail-nav--next" type="button" data-detail-nav="next" aria-label="Next work">Next</button>
+      </div>
+
+      <article class="detail-card">
+        <div class="detail-meta">
+          <p id="detail-department">Department</p>
+          <p id="detail-object-id">Object</p>
+        </div>
+        <h2 id="detail-title">Artwork title</h2>
+        <p class="detail-artist" id="detail-artist">Artist</p>
+        <dl class="detail-specs">
+          <div><dt>Date</dt><dd id="detail-date">Not listed</dd></div>
+          <div><dt>Medium</dt><dd id="detail-medium">Not listed</dd></div>
+          <div><dt>Classification</dt><dd id="detail-classification">Not listed</dd></div>
+          <div><dt>Culture</dt><dd id="detail-culture">Not listed</dd></div>
+          <div><dt>Gallery</dt><dd id="detail-gallery-number">Not listed</dd></div>
+        </dl>
+        <p class="detail-credit" id="detail-credit"></p>
+        <a class="met-link" id="detail-link" href="https://www.metmuseum.org/art/collection" target="_blank" rel="noreferrer">Open canonical MET record</a>
+      </article>
+    </div>
+  </dialog>
+
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <button type="button" data-action="home">Discover</button>
+    <button type="button" data-action="search">Search</button>
+    <button type="button" data-action="saved">Saved <span id="mobile-saved-count">0</span></button>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="sr-only" id="sr-status" aria-live="polite"></div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

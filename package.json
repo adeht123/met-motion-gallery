@@ -1,0 +1,15 @@
+{
+  "name": "met-motion-index",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A motion-driven gallery interface powered by The Met Open Access API.",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

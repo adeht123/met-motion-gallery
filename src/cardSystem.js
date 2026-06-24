@@ -11,17 +11,17 @@ export const CARD_GRID = {
     mode: "tablet",
     minWidth: 560,
     maxWidth: 1079,
-    columns: 8,
+    columns: 6,
     gap: 14,
-    offsetScale: 0.2,
-    searchOffset: 10
+    offsetScale: 0,
+    searchOffset: 0
   },
   mobile: {
     mode: "mobile",
     maxWidth: 559,
-    columns: 4,
+    columns: 1,
     gap: 12,
-    offsetScale: 0.04,
+    offsetScale: 0,
     searchOffset: 0
   }
 };
@@ -56,20 +56,15 @@ export function getCardGridConfig(galleryWidth) {
 }
 
 export function getScaledCardSpan(rawSpan, config, index, variant) {
-  if (config.mode === "mobile") return variant === "feature" || index % 9 === 0 ? 4 : 2;
-  if (config.mode === "tablet") {
-    if (variant === "feature") return 4;
-    if (variant === "standard") return 3;
-    return 2;
-  }
+  if (config.mode === "mobile") return 1;
+  if (config.mode === "tablet") return 3;
   return Math.min(5, Math.max(2, Number(rawSpan) || 2));
 }
 
 export function getScaledCardStart(rawStart, rawSpan, computedSpan, config) {
   const start = Number(rawStart);
-  if (!Number.isFinite(start) || config.mode === "mobile") return null;
+  if (!Number.isFinite(start) || config.mode !== "desktop") return null;
   const currentMax = Math.max(0, config.columns - computedSpan);
-  if (config.mode === "tablet") return Math.min(currentMax, Math.max(0, Math.round(start)));
 
   const desktopMax = Math.max(0, CARD_GRID.desktop.columns - (Number(rawSpan) || 2));
   if (!desktopMax) return 0;

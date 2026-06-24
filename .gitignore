@@ -10,6 +10,8 @@ node_modules/
 
 # Local verification artifacts
 qa-captures/
+/met-*.png
+/tmp/
 
 # Unused legacy bundle; the app loads src/main.js.
 app.js

@@ -7,6 +7,7 @@ import {
   getScaledCardStart,
   getScaledCardSpan
 } from "./cardSystem.js";
+import { getCardLabelIcon, getCardLabelTone } from "./cardPresentation.js";
 import {
   createDiscoveryDiversityState,
   reviewDiscoverCandidate
@@ -544,7 +545,6 @@ function getCardLayout(work, index) {
   let span = slot.span;
   if (variant === "feature" && imageKind === "landscape") span = 5;
   if (variant === "feature" && imageKind === "portrait") span = 4;
-  if (variant === "standard" && imageKind === "object") span = 2;
   const desktopConfig = getCardGridConfig(Number.POSITIVE_INFINITY);
   const maxStart = desktopConfig.columns - span;
   const mirroredStart = unit % 2 === 1 ? maxStart - slot.start : slot.start;
@@ -581,15 +581,29 @@ function createCard(work, index) {
 
   const header = createElement("div", "art-card__header");
   const topLine = createElement("div", "art-card__topline");
-  topLine.append(createElement("span", "art-card__index", padNumber(index + 1)));
 
   const saveButton = createElement("button", "art-card__save");
   saveButton.type = "button";
   saveButton.dataset.id = String(work.id);
   setSaveButtonState(saveButton, isSaved(work.id));
-  topLine.append(saveButton);
 
-  const type = createElement("p", "art-card__type", compactText(work.classification || work.type, 28));
+  const labelText = compactText(work.classification || work.type || work.objectName || "Object", 28);
+  const labelIcon = getCardLabelIcon(work);
+  const type = createElement("p", "art-card__type");
+  type.dataset.tone = getCardLabelTone(work);
+  if (labelIcon) {
+    type.classList.add("art-card__type--icon");
+    type.dataset.icon = labelIcon.slug;
+    const iconImage = createElement("img", "art-card__type-icon");
+    iconImage.src = labelIcon.src;
+    iconImage.alt = "";
+    type.append(iconImage, createElement("span", "sr-only", labelText));
+  } else {
+    type.classList.add("sr-only");
+    type.append(createElement("span", "", labelText));
+  }
+  topLine.append(type, saveButton);
+
   const title = createElement("h2", "", cardTitle);
   const facts = createElement("div", "art-card__facts");
   const factsList = [
@@ -597,7 +611,7 @@ function createCard(work, index) {
     compactText(work.date || "Date not listed", 34)
   ].filter(Boolean);
   factsList.forEach((fact) => facts.append(createElement("span", "", fact)));
-  header.append(topLine, type, title, facts);
+  header.append(topLine, title, facts);
 
   const media = createElement("div", "art-card__media");
   media.classList.add(`art-card__media--${layout.imageKind}`);
@@ -747,6 +761,34 @@ function flushLayoutCallbacks() {
   callbacks.forEach((callback) => callback());
 }
 
+function layoutSequentialRows(cells, config, columnWidth, galleryRect, measuredHeights) {
+  const rowSize = config.mode === "mobile" ? 1 : 2;
+  let rowY = 0;
+
+  for (let rowStart = 0; rowStart < cells.length; rowStart += rowSize) {
+    let rowHeight = 0;
+
+    for (let slot = 0; slot < rowSize; slot += 1) {
+      const index = rowStart + slot;
+      const cell = cells[index];
+      if (!cell) continue;
+
+      const span = Number(cell.dataset.computedSpan) || config.columns;
+      const start = config.mode === "mobile" ? 0 : slot * span;
+      const x = start * (columnWidth + config.gap);
+      const snappedX = Math.round(galleryRect.left + x) - galleryRect.left;
+      const snappedY = Math.round(galleryRect.top + rowY) - galleryRect.top;
+
+      cell.style.transform = `translate(${snappedX}px, ${snappedY}px)`;
+      rowHeight = Math.max(rowHeight, measuredHeights[index] || 0);
+    }
+
+    rowY += rowHeight + config.gap;
+  }
+
+  dom.gallery.style.height = `${Math.max(0, rowY - config.gap)}px`;
+}
+
 function layoutGallery(force = false) {
   state.layoutFrame = 0;
   if (dom.gallery.classList.contains("gallery--skeleton")) {
@@ -777,6 +819,18 @@ function layoutGallery(force = false) {
 
   void dom.gallery.offsetWidth;
   const measuredHeights = cells.map((cell) => cell.offsetHeight);
+
+  if (config.mode !== "desktop") {
+    layoutSequentialRows(cells, config, columnWidth, galleryRect, measuredHeights);
+    dom.gallery.dataset.laidOut = "true";
+    window.setTimeout(() => {
+      cells.forEach((cell) => {
+        cell.style.willChange = "auto";
+      });
+    }, 800);
+    flushLayoutCallbacks();
+    return;
+  }
 
   const heights = new Array(config.columns).fill(0);
   cells.forEach((cell, index) => {

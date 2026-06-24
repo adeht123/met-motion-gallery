@@ -4,3 +4,5 @@ qa-captures/
 .lazyweb/
 .playwright-mcp/
 .superpowers/
+/met-*.png
+/tmp/

@@ -1,0 +1,568 @@
+{
+  "source": "assets/label-icons/source/met-label-icons-sheet-c.png",
+  "sources": [
+    {
+      "key": "base",
+      "path": "assets/label-icons/source/met-label-icons-sheet-c.png",
+      "grid": {
+        "columns": [
+          0,
+          314,
+          627,
+          940,
+          1254
+        ],
+        "rows": [
+          0,
+          418,
+          836,
+          1254
+        ]
+      }
+    },
+    {
+      "key": "missing-discover",
+      "path": "assets/label-icons/source/met-label-icons-sheet-missing-discover.png",
+      "grid": {
+        "columns": [
+          0,
+          314,
+          627,
+          940,
+          1254
+        ],
+        "rows": [
+          0,
+          418,
+          836,
+          1254
+        ]
+      }
+    },
+    {
+      "key": "broad",
+      "path": "assets/label-icons/source/met-label-icons-sheet-broad.png",
+      "grid": {
+        "columns": [
+          0,
+          362,
+          724,
+          1086,
+          1448
+        ],
+        "rows": [
+          0,
+          362,
+          724,
+          1086
+        ]
+      }
+    }
+  ],
+  "items": [
+    {
+      "index": 1,
+      "label": "Paintings",
+      "slug": "paintings",
+      "sheet": "base",
+      "sourceCell": [
+        0,
+        0,
+        314,
+        418
+      ],
+      "master": "assets/label-icons/png-1024/paintings.png",
+      "ui": "assets/label-icons/png-256/paintings.png"
+    },
+    {
+      "index": 2,
+      "label": "Painting",
+      "slug": "painting",
+      "sheet": "base",
+      "sourceCell": [
+        314,
+        0,
+        627,
+        418
+      ],
+      "master": "assets/label-icons/png-1024/painting.png",
+      "ui": "assets/label-icons/png-256/painting.png"
+    },
+    {
+      "index": 3,
+      "label": "Stone Sculpture",
+      "slug": "stone-sculpture",
+      "sheet": "base",
+      "sourceCell": [
+        627,
+        0,
+        940,
+        418
+      ],
+      "master": "assets/label-icons/png-1024/stone-sculpture.png",
+      "ui": "assets/label-icons/png-256/stone-sculpture.png"
+    },
+    {
+      "index": 4,
+      "label": "Drawings",
+      "slug": "drawings",
+      "sheet": "base",
+      "sourceCell": [
+        940,
+        0,
+        1254,
+        418
+      ],
+      "master": "assets/label-icons/png-1024/drawings.png",
+      "ui": "assets/label-icons/png-256/drawings.png"
+    },
+    {
+      "index": 5,
+      "label": "Textiles-Tapestries",
+      "slug": "textiles-tapestries",
+      "sheet": "base",
+      "sourceCell": [
+        0,
+        418,
+        350,
+        836
+      ],
+      "master": "assets/label-icons/png-1024/textiles-tapestries.png",
+      "ui": "assets/label-icons/png-256/textiles-tapestries.png"
+    },
+    {
+      "index": 6,
+      "label": "Glass",
+      "slug": "glass",
+      "sheet": "base",
+      "sourceCell": [
+        314,
+        418,
+        627,
+        836
+      ],
+      "master": "assets/label-icons/png-1024/glass.png",
+      "ui": "assets/label-icons/png-256/glass.png"
+    },
+    {
+      "index": 7,
+      "label": "Armor for Man",
+      "slug": "armor-for-man",
+      "sheet": "base",
+      "sourceCell": [
+        627,
+        418,
+        940,
+        836
+      ],
+      "master": "assets/label-icons/png-1024/armor-for-man.png",
+      "ui": "assets/label-icons/png-256/armor-for-man.png"
+    },
+    {
+      "index": 8,
+      "label": "Prints",
+      "slug": "prints",
+      "sheet": "base",
+      "sourceCell": [
+        900,
+        418,
+        1254,
+        836
+      ],
+      "master": "assets/label-icons/png-1024/prints.png",
+      "ui": "assets/label-icons/png-256/prints.png"
+    },
+    {
+      "index": 9,
+      "label": "Ceramics",
+      "slug": "ceramics",
+      "sheet": "base",
+      "sourceCell": [
+        0,
+        836,
+        314,
+        1254
+      ],
+      "master": "assets/label-icons/png-1024/ceramics.png",
+      "ui": "assets/label-icons/png-256/ceramics.png"
+    },
+    {
+      "index": 10,
+      "label": "Manuscripts and Illuminations",
+      "slug": "manuscripts-illuminations",
+      "sheet": "base",
+      "sourceCell": [
+        314,
+        836,
+        627,
+        1254
+      ],
+      "master": "assets/label-icons/png-1024/manuscripts-illuminations.png",
+      "ui": "assets/label-icons/png-256/manuscripts-illuminations.png"
+    },
+    {
+      "index": 11,
+      "label": "Metal",
+      "slug": "metal",
+      "sheet": "base",
+      "sourceCell": [
+        627,
+        805,
+        940,
+        1254
+      ],
+      "master": "assets/label-icons/png-1024/metal.png",
+      "ui": "assets/label-icons/png-256/metal.png"
+    },
+    {
+      "index": 12,
+      "label": "Textiles-Painted and Dyed",
+      "slug": "textiles-painted-dyed",
+      "sheet": "base",
+      "sourceCell": [
+        940,
+        836,
+        1254,
+        1254
+      ],
+      "master": "assets/label-icons/png-1024/textiles-painted-dyed.png",
+      "ui": "assets/label-icons/png-256/textiles-painted-dyed.png"
+    },
+    {
+      "index": 13,
+      "label": "Papyrus",
+      "slug": "papyrus",
+      "sheet": "missing-discover",
+      "sourceCell": [
+        0,
+        0,
+        314,
+        418
+      ],
+      "master": "assets/label-icons/png-1024/papyrus.png",
+      "ui": "assets/label-icons/png-256/papyrus.png"
+    },
+    {
+      "index": 14,
+      "label": "Statuette",
+      "slug": "statuette",
+      "sheet": "missing-discover",
+      "sourceCell": [
+        314,
+        0,
+        627,
+        418
+      ],
+      "master": "assets/label-icons/png-1024/statuette.png",
+      "ui": "assets/label-icons/png-256/statuette.png"
+    },
+    {
+      "index": 15,
+      "label": "Enamels-Cloisonne",
+      "slug": "enamels-cloisonne",
+      "sheet": "missing-discover",
+      "sourceCell": [
+        627,
+        0,
+        940,
+        418
+      ],
+      "master": "assets/label-icons/png-1024/enamels-cloisonne.png",
+      "ui": "assets/label-icons/png-256/enamels-cloisonne.png"
+    },
+    {
+      "index": 16,
+      "label": "Stone Head",
+      "slug": "stone-head",
+      "sheet": "missing-discover",
+      "sourceCell": [
+        940,
+        0,
+        1254,
+        418
+      ],
+      "master": "assets/label-icons/png-1024/stone-head.png",
+      "ui": "assets/label-icons/png-256/stone-head.png"
+    },
+    {
+      "index": 17,
+      "label": "Frames",
+      "slug": "frames",
+      "sheet": "missing-discover",
+      "sourceCell": [
+        0,
+        418,
+        314,
+        836
+      ],
+      "master": "assets/label-icons/png-1024/frames.png",
+      "ui": "assets/label-icons/png-256/frames.png"
+    },
+    {
+      "index": 18,
+      "label": "Containers",
+      "slug": "containers",
+      "sheet": "missing-discover",
+      "sourceCell": [
+        314,
+        418,
+        627,
+        836
+      ],
+      "master": "assets/label-icons/png-1024/containers.png",
+      "ui": "assets/label-icons/png-256/containers.png"
+    },
+    {
+      "index": 19,
+      "label": "Amulets",
+      "slug": "amulets",
+      "sheet": "missing-discover",
+      "sourceCell": [
+        627,
+        418,
+        940,
+        836
+      ],
+      "master": "assets/label-icons/png-1024/amulets.png",
+      "ui": "assets/label-icons/png-256/amulets.png"
+    },
+    {
+      "index": 20,
+      "label": "Relief",
+      "slug": "relief",
+      "sheet": "missing-discover",
+      "sourceCell": [
+        940,
+        418,
+        1254,
+        836
+      ],
+      "master": "assets/label-icons/png-1024/relief.png",
+      "ui": "assets/label-icons/png-256/relief.png"
+    },
+    {
+      "index": 21,
+      "label": "Bronzes",
+      "slug": "bronzes",
+      "sheet": "missing-discover",
+      "sourceCell": [
+        0,
+        836,
+        314,
+        1254
+      ],
+      "master": "assets/label-icons/png-1024/bronzes.png",
+      "ui": "assets/label-icons/png-256/bronzes.png"
+    },
+    {
+      "index": 22,
+      "label": "Vases",
+      "slug": "vases",
+      "sheet": "missing-discover",
+      "sourceCell": [
+        314,
+        836,
+        627,
+        1254
+      ],
+      "master": "assets/label-icons/png-1024/vases.png",
+      "ui": "assets/label-icons/png-256/vases.png"
+    },
+    {
+      "index": 23,
+      "label": "Codices",
+      "slug": "codices",
+      "sheet": "missing-discover",
+      "sourceCell": [
+        627,
+        836,
+        940,
+        1254
+      ],
+      "master": "assets/label-icons/png-1024/codices.png",
+      "ui": "assets/label-icons/png-256/codices.png"
+    },
+    {
+      "index": 24,
+      "label": "Object Fragment",
+      "slug": "object-fragment",
+      "sheet": "missing-discover",
+      "sourceCell": [
+        940,
+        836,
+        1254,
+        1254
+      ],
+      "master": "assets/label-icons/png-1024/object-fragment.png",
+      "ui": "assets/label-icons/png-256/object-fragment.png"
+    },
+    {
+      "index": 25,
+      "label": "Photographs",
+      "slug": "photographs",
+      "sheet": "broad",
+      "sourceCell": [
+        0,
+        0,
+        362,
+        362
+      ],
+      "master": "assets/label-icons/png-1024/photographs.png",
+      "ui": "assets/label-icons/png-256/photographs.png"
+    },
+    {
+      "index": 26,
+      "label": "Furniture",
+      "slug": "furniture",
+      "sheet": "broad",
+      "sourceCell": [
+        362,
+        0,
+        724,
+        362
+      ],
+      "master": "assets/label-icons/png-1024/furniture.png",
+      "ui": "assets/label-icons/png-256/furniture.png"
+    },
+    {
+      "index": 27,
+      "label": "Jewelry",
+      "slug": "jewelry",
+      "sheet": "broad",
+      "sourceCell": [
+        724,
+        0,
+        1086,
+        362
+      ],
+      "master": "assets/label-icons/png-1024/jewelry.png",
+      "ui": "assets/label-icons/png-256/jewelry.png"
+    },
+    {
+      "index": 28,
+      "label": "Costume",
+      "slug": "costume",
+      "sheet": "broad",
+      "sourceCell": [
+        1086,
+        0,
+        1448,
+        362
+      ],
+      "master": "assets/label-icons/png-1024/costume.png",
+      "ui": "assets/label-icons/png-256/costume.png"
+    },
+    {
+      "index": 29,
+      "label": "Books",
+      "slug": "books",
+      "sheet": "broad",
+      "sourceCell": [
+        0,
+        362,
+        362,
+        724
+      ],
+      "master": "assets/label-icons/png-1024/books.png",
+      "ui": "assets/label-icons/png-256/books.png"
+    },
+    {
+      "index": 30,
+      "label": "Musical Instruments",
+      "slug": "musical-instruments",
+      "sheet": "broad",
+      "sourceCell": [
+        362,
+        362,
+        724,
+        724
+      ],
+      "master": "assets/label-icons/png-1024/musical-instruments.png",
+      "ui": "assets/label-icons/png-256/musical-instruments.png"
+    },
+    {
+      "index": 31,
+      "label": "Woodwork",
+      "slug": "woodwork",
+      "sheet": "broad",
+      "sourceCell": [
+        724,
+        362,
+        1086,
+        724
+      ],
+      "master": "assets/label-icons/png-1024/woodwork.png",
+      "ui": "assets/label-icons/png-256/woodwork.png"
+    },
+    {
+      "index": 32,
+      "label": "Ephemera",
+      "slug": "ephemera",
+      "sheet": "broad",
+      "sourceCell": [
+        1086,
+        362,
+        1448,
+        724
+      ],
+      "master": "assets/label-icons/png-1024/ephemera.png",
+      "ui": "assets/label-icons/png-256/ephemera.png"
+    },
+    {
+      "index": 33,
+      "label": "Generic Object",
+      "slug": "generic-object",
+      "sheet": "broad",
+      "sourceCell": [
+        0,
+        724,
+        362,
+        1086
+      ],
+      "master": "assets/label-icons/png-1024/generic-object.png",
+      "ui": "assets/label-icons/png-256/generic-object.png"
+    },
+    {
+      "index": 34,
+      "label": "Coins",
+      "slug": "coins",
+      "sheet": "broad",
+      "sourceCell": [
+        362,
+        724,
+        724,
+        1086
+      ],
+      "master": "assets/label-icons/png-1024/coins.png",
+      "ui": "assets/label-icons/png-256/coins.png"
+    },
+    {
+      "index": 35,
+      "label": "Weapons",
+      "slug": "weapons",
+      "sheet": "broad",
+      "sourceCell": [
+        724,
+        724,
+        1086,
+        1086
+      ],
+      "master": "assets/label-icons/png-1024/weapons.png",
+      "ui": "assets/label-icons/png-256/weapons.png"
+    },
+    {
+      "index": 36,
+      "label": "Architectural Elements",
+      "slug": "architectural-elements",
+      "sheet": "broad",
+      "sourceCell": [
+        1086,
+        724,
+        1448,
+        1086
+      ],
+      "master": "assets/label-icons/png-1024/architectural-elements.png",
+      "ui": "assets/label-icons/png-256/architectural-elements.png"
+    }
+  ]
+}

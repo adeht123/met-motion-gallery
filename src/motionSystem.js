@@ -1,5 +1,5 @@
-export const CARD_REVEAL_STEP_MS = 18;
-export const CARD_REVEAL_MAX_MS = 180;
+export const CARD_REVEAL_STEP_MS = 48;
+export const CARD_REVEAL_MAX_MS = 560;
 export const DETAIL_ENTRY_DURATION_MS = 340;
 export const DETAIL_NAV_EXIT_MS = 80;
 export const DETAIL_NAV_ENTER_DELAY_MS = 40;
@@ -7,8 +7,8 @@ export const DETAIL_NAV_ENTER_MS = 180;
 
 const CARD_REVEAL_VARIANT_OFFSET = {
   feature: 0,
-  standard: 18,
-  compact: 36
+  standard: 24,
+  compact: 48
 };
 
 function clamp(value, min, max) {
